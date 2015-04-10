@@ -83,12 +83,12 @@ function alterAll(fun) {
 
 var plusTenGrade = partial(alterGrade(plusTen));
 
-var plusTenAll = partial(alterAll(plusTenGrade));
-
 //
 // Add 10 points to 1 grade
 //
 console.log(plusTenGrade(grade));
+
+var plusTenAll = partial(alterAll(plusTenGrade));
 
 //
 // Add 10 points to all
