@@ -14,7 +14,9 @@ function printGrades(grades) {
 //
 // Data
 //
-var student = [{name: "Miguel", last: "Orozco"}, 10];
+var student = {name: "Miguel", last: "Orozco"};
+
+var grade = [student, 10];
 
 var grades = [[{name: "Jose", last: "Lopez"}, 30],
 	      [{name: "Carlos", last: "Paiz"}, 49],
@@ -23,7 +25,7 @@ var grades = [[{name: "Jose", last: "Lopez"}, 30],
 //
 // Augment data (beware of mutation!)
 //
-grades = construct(student, grades);
+grades = construct(grade, grades);
 grades = construct([{name: "Karla", last: "Castillo"}, 68], grades);
 grades = construct([{name: "Mario", last: "Zoto"}, 90], grades);
 
@@ -50,7 +52,7 @@ console.log(
 // Reject "Miguel Orozco"
 //
 console.log(
-    _.reject(grades, function(v) { return v === student; })
+    _.reject(grades, function(v) { return v === grade; })
 );
 
 //
@@ -84,9 +86,9 @@ var plusTenGrade = partial(alterGrade(plusTen));
 var plusTenAll = partial(alterAll(plusTenGrade));
 
 //
-// Add 10 points to 1 student
+// Add 10 points to 1 grade
 //
-console.log(plusTenGrade(student));
+console.log(plusTenGrade(grade));
 
 //
 // Add 10 points to all
