@@ -1,3 +1,7 @@
+// Code from book Functional JavaScript (O'Reilly)
+// Copyright © 2013 Michael Fogus
+// ISBN:978-1-4493-6072-6
+
 var _ = require("underscore");
 
 function existy(x) { return x != null; }
@@ -25,10 +29,10 @@ function partial(fun) {
 }
 
 var tools = {
-  existy: existy,
-  cat: cat,
-  construct: construct,
-  partial: partial
+    existy: existy,
+    cat: cat,
+    construct: construct,
+    partial: partial
 };
 
 module.exports = tools;
