@@ -49,10 +49,10 @@ console.log(
 );
 
 //
-// Reject "Miguel Orozco"
+// Reject student "Miguel Orozco"
 //
 console.log(
-    _.reject(grades, function(v) { return v === grade; })
+    _.reject(grades, function(v) { return v[0] === student; })
 );
 
 //
