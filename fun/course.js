@@ -62,10 +62,10 @@ console.log(
     _.map(grades, function(v) { return [v[0], v[1] + 10]; })
 );
 
-//////////////////////////////
-// Create Partial Functions //
-//////////////////////////////
-var partial = tools.partial;
+
+///////////////////////////
+// Functions Composition //
+///////////////////////////
 
 function plusTen(n) { return n + 10; };
 
@@ -81,14 +81,14 @@ function alterAll(fun) {
   };
 }
 
-var plusTenGrade = partial(alterGrade(plusTen));
+var plusTenGrade = alterGrade(plusTen);
 
 //
 // Add 10 points to 1 grade
 //
 console.log(plusTenGrade(grade));
 
-var plusTenAll = partial(alterAll(plusTenGrade));
+var plusTenAll = alterAll(plusTenGrade);
 
 //
 // Add 10 points to all
@@ -101,7 +101,7 @@ function always(n) {
   };
 }
 
-var resetAll = partial(alterAll(alterGrade(always(0))));
+var resetAll = alterAll(alterGrade(always(0)));
 
 //
 // Reset all grades

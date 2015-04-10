@@ -25,23 +25,10 @@ function construct(head, tail) {
   return cat([head], _.toArray(tail));
 }
 
-//
-// Creates partial function
-//
-function partial(fun) {
-  var pargs = _.rest(arguments);
-
-  return function() {
-    var args = cat(pargs, _.toArray(arguments));
-    return fun.apply(fun, args);
-  };
-}
-
 var tools = {
     existy: existy,
     cat: cat,
-    construct: construct,
-    partial: partial
+    construct: construct
 };
 
 module.exports = tools;
