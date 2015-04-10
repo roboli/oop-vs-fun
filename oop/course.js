@@ -1,3 +1,6 @@
+//////////////////
+// Person Class //
+//////////////////
 var person = function(name, lastName) {
   var _name = name;
   var _lastName = lastName;
@@ -21,11 +24,17 @@ var person = function(name, lastName) {
   };
 };
 
+///////////////////
+// Student Class //
+///////////////////
 var student = function(name, lastName) {
   var obj = person(name, lastName);
   return obj;
 };
 
+///////////////////
+// Teacher Class //
+///////////////////
 var teacher = function(title, name, lastName) {
   var obj = person(name, lastName);
   var _title = title;
@@ -37,6 +46,9 @@ var teacher = function(title, name, lastName) {
   return obj;
 };
 
+/////////////////
+// Grade Class //
+/////////////////
 var grade = function(student, points) {
   var _student = student;
   var _points = points;
@@ -51,6 +63,9 @@ var grade = function(student, points) {
   };
 };
 
+//////////////////
+// Course Class //
+//////////////////
 var course = function() {
   var _grades = [];
 
@@ -82,6 +97,9 @@ var course = function() {
   };
 };
 
+//////////////////////////////
+// Printer Utility Function //
+//////////////////////////////
 function gradesPrinter(grades) {
   var s = "";
   
@@ -92,12 +110,23 @@ function gradesPrinter(grades) {
   return s;
 }
 
+
+//////////
+// Main //
+//////////
+
+//
+// Create students
+//
 var s1 = student("Juan", "Perez");
 var s2 = student("Carlos", "Gonzalez");
 var s3 = student("Ana", "Ramirez");
 var s4 = student("Karla", "Lopez");
 var s5 = student("Miguel", "Flores");
 
+//
+// Create course and add grades
+//
 var c = course();
 
 c.addGrade(grade(s1, 59));
@@ -106,10 +135,12 @@ c.addGrade(grade(s3, 100));
 c.addGrade(grade(s4, 45));
 c.addGrade(grade(s5, 77));
 
+//
+// Print grades
+//
 console.log(gradesPrinter(c.getGrades()));
 
+//
+// Print sorted grades
+//
 console.log(gradesPrinter(c.getGradesSort(true)));
-
-var gradd = c.getGrades();
-
-console.log(gradesPrinter(c.getGrades()));
