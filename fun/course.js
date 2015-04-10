@@ -33,14 +33,14 @@ grades = construct([{name: "Mario", last: "Zoto"}, 90], grades);
 console.log(printGrades(grades));
 
 //
-// Sort
+// Sort Asc (Positive v[n])
 //
 console.log(
     _.sortBy(grades, function(v){ return v[1]; })
 );
 
 //
-// Filter
+// Filter grades over 50 points
 //
 console.log(
     _.filter(grades, function(v) { return v[1] > 50;})
