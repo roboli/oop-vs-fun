@@ -75,18 +75,18 @@ function alterGrade(fun) {
   };
 }
 
-function alterAll(fun) {
-  return function(ary) {
-    return _.map(ary, fun);
-  };
-}
-
 var plusTenGrade = alterGrade(plusTen);
 
 //
 // Add 10 points to 1 grade
 //
 console.log(plusTenGrade(grade));
+
+function alterAll(fun) {
+  return function(ary) {
+    return _.map(ary, fun);
+  };
+}
 
 var plusTenAll = alterAll(plusTenGrade);
 
