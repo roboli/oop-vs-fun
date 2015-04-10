@@ -6,6 +6,9 @@ var _ = require("underscore");
 
 function existy(x) { return x != null; }
 
+//
+// cat([1, 2, 3], [4, 5, 6]) => [1, 2, 3, 4, 5, 6]
+//
 function cat() {
   var head = _.first(arguments);
   
@@ -15,10 +18,16 @@ function cat() {
     return [];
 }
 
+//
+// construct(1, [2, 3]) => [1, 2, 3]
+//
 function construct(head, tail) {
   return cat([head], _.toArray(tail));
 }
 
+//
+// Creates partial function
+//
 function partial(fun) {
   var pargs = _.rest(arguments);
 
