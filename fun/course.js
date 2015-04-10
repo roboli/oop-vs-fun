@@ -1,36 +1,69 @@
 var _ = require("underscore");
 var tools = require("./fun_tools");
-
 var construct = tools.construct;
-var partial = tools.partial;
 
+//////////////////////////////
+// Printer Utility Function //
+//////////////////////////////
 function printGrades(grades) {
   return _.reduce(grades, function(a, b) {
     return a + _.values(b[0]).join(" ") + ": " + b[1] + "\n";
   }, "");
 }
 
+//
+// Data
+//
 var student = [{name: "Miguel", last: "Orozco"}, 10];
 
 var grades = [[{name: "Jose", last: "Lopez"}, 30],
 	      [{name: "Carlos", last: "Paiz"}, 49],
 	      [{name: "Luis", last: "Rodriguez"}, 88]];
 
+//
+// Augment data (beware of mutation!)
+//
 grades = construct(student, grades);
 grades = construct([{name: "Karla", last: "Castillo"}, 68], grades);
 grades = construct([{name: "Mario", last: "Zoto"}, 90], grades);
 
-_.sortBy(grades, function(v){ return v[1]; });
+//
+// Print
+//
+console.log(printGrades(grades));
 
-printGrades(grades);
+//
+// Sort
+//
+console.log(
+    _.sortBy(grades, function(v){ return v[1]; })
+);
 
-_.filter(grades, function(v) { return v[1] > 50;});
+//
+// Filter
+//
+console.log(
+    _.filter(grades, function(v) { return v[1] > 50;})
+);
 
-grades = _.reject(grades, function(v) { return v === student; });
+//
+// Reject "Miguel Orozco"
+//
+console.log(
+    _.reject(grades, function(v) { return v === student; })
+);
 
-console.log(grades);
+//
+// Add 10 points to all
+//
+console.log(
+    _.map(grades, function(v) { return [v[0], v[1] + 10]; })
+);
 
-console.log(_.map(grades, function(v) { return [v[0], v[1] + 10]; }));
+//////////////////////////////
+// Create Partial Functions //
+//////////////////////////////
+var partial = tools.partial;
 
 function plusTen(n) { return n + 10; };
 
@@ -50,8 +83,14 @@ var plusTenGrade = partial(alterGrade(plusTen));
 
 var plusTenAll = partial(alterAll(plusTenGrade));
 
+//
+// Add 10 points to 1 student
+//
 console.log(plusTenGrade(student));
 
+//
+// Add 10 points to all
+//
 console.log(plusTenAll(grades));
 
 function always(n) {
@@ -62,6 +101,7 @@ function always(n) {
 
 var resetAll = partial(alterAll(alterGrade(always(0))));
 
+//
+// Reset all grades
+//
 console.log(resetAll(grades));
-
-resetAll(grades);
