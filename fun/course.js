@@ -23,7 +23,7 @@ var grades = [[{name: "Jose", last: "Lopez"}, 30],
 	      [{name: "Luis", last: "Rodriguez"}, 88]];
 
 //
-// Augment data (beware of mutation!)
+// Augment data (using mutation)
 //
 grades = construct(grade, grades);
 grades = construct([{name: "Karla", last: "Castillo"}, 68], grades);
@@ -32,11 +32,15 @@ grades = construct([{name: "Mario", last: "Zoto"}, 90], grades);
 //
 // Print
 //
-console.log(printGrades(grades));
+console.log("Using printGrades:");
+console.log(
+    printGrades(grades)
+);
 
 //
 // Sort Asc (Positive v[n])
 //
+console.log("Ascending Order:");
 console.log(
     _.sortBy(grades, function(v){ return v[1]; })
 );
@@ -44,6 +48,7 @@ console.log(
 //
 // Filter grades over 50 points
 //
+console.log("\nFilter over 50:");
 console.log(
     _.filter(grades, function(v) { return v[1] > 50;})
 );
@@ -51,6 +56,7 @@ console.log(
 //
 // Reject student "Miguel Orozco"
 //
+console.log("\nReject Miguel Orozco:");
 console.log(
     _.reject(grades, function(v) { return v[0] === student; })
 );
@@ -58,6 +64,7 @@ console.log(
 //
 // Add 10 points to all
 //
+console.log("\nAdd 10 points to all:");
 console.log(
     _.map(grades, function(v) { return [v[0], v[1] + 10]; })
 );
@@ -80,6 +87,7 @@ var plusTenGrade = alterGrade(plusTen);
 //
 // Add 10 points to 1 grade
 //
+console.log("\nplusTen grade:");
 console.log(plusTenGrade(grade));
 
 function alterAll(fun) {
@@ -93,6 +101,7 @@ var plusTenAll = alterAll(plusTenGrade);
 //
 // Add 10 points to all
 //
+console.log("\nplusTenAll grades:");
 console.log(plusTenAll(grades));
 
 function always(n) {
@@ -106,4 +115,5 @@ var resetAll = alterAll(alterGrade(always(0)));
 //
 // Reset all grades
 //
+console.log("\nresetAll grades:");
 console.log(resetAll(grades));
