@@ -1,0 +1,7 @@
+{
+  "name": "oop-vs-fun",
+  "version": "1.0.0",
+  "dependencies" : {
+    "underscore": "1.8.x"
+  }
+}
